@@ -21,5 +21,26 @@ heapq.heappop(list1)
 print(list1)
 
 
-while len(list1) > 1:
+while list1:
     print(heapq.heappop(list1))
+
+
+
+# practice with priority queue
+
+street_dict = {
+    'main street': 3,
+    'mlk street': 2,
+    'bryan avenue': 1,
+    'shiraz lane': 4 
+}
+
+print("Origianl street distances", street_dict)
+
+pq = [(priority, street) for street, priority in street_dict.items()]
+
+print("Converted to tuples", pq)
+
+heapq.heapify(pq)
+print("Converted to heap", pq)
+

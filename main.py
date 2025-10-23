@@ -1,72 +1,35 @@
 import heapq
-# binary min heap implementation
 
-# practice with heapq
-he = []
-heapq.heappush(he, 1)
-
-print(heapq.heappop(he))
-
-
-list1 = [5,4,3,2,10, 9, 22]
-
-print(list1)
-
-heapq.heapify(list1)
-
-print(list1)
-
-heapq.heappop(list1)
-
-print(list1)
-
-
-while list1:
-    print(heapq.heappop(list1))
-
-
-
-# practice with priority queue
-
-street_dict = {
-    'main street': 3,
-    'mlk street': 2,
-    'bryan avenue': 1,
-    'shiraz lane': 4 
+# map renamed to G to match pseudocode
+G = {
+    's': {'t': 10, 'y': 5},
+    't': {'x': 1, 'y': 2},
+    'x': {'z': 4},
+    'y': {'t': 3, 'x': 9, 'z': 2},
+    'z': {'s': 7, 'x': 6}
 }
+s = 's'
 
-print("Origianl street distances", street_dict)
+def dijkstra(graph, source_node):
+# intialization
+    d = {node: float('inf') for node in graph}
+    parent = {node: None for node in graph}
+    d[s] = 0
+    parent[s] = s
 
-pq = [(priority, street) for street, priority in street_dict.items()]
+    
 
-print("Converted to tuples", pq)
-
-heapq.heapify(pq)
-print("Converted to heap", pq)
-
-# testing relxation step
-
-# original data structure
-d = {'start':0, 'u':2, 'v': 10}
-parent = {'u': 'start', 'v': 'start'}
+    Q = [(0, s)]
 
 
-current_node_u = 'u'
-neighbor_v = 'v'
-weight_u_v = 3 # weight of edge: u to v
+    print("Distances: ", d)
+    print("Parents: ", parent)
+    print("Priority Queue: ", Q)
 
-print("Original state")
-print("Distances (d) ", d)
-print("Parents: ", parent)
+    print()
+    return d, parent
 
-# relaxtion step
+print("Testing initialization")
+dijkstra(G,s)
 
-if d[current_node_u] + weight_u_v < d[neighbor_v]:
-    print("A better path was found. updating d[v]")
 
-    d[neighbor_v] = d[current_node_u] + weight_u_v
-    parent[neighbor_v] = current_node_u
-
-print("end state")
-print("Distances (d): ", d)
-print("Parents is now:", parent)

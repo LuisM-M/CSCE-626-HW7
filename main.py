@@ -27,7 +27,31 @@ def dijkstra(graph, source_node):
     print("Priority Queue: ", Q)
 
     print()
+    iteration = 0
+    while Q:
+        iteration = iteration + 1
+        print("_______ ITERATION ", iteration,"________" )
+
+        # u:= extract-min(Q)
+        current_distance, u = heapq.heappop(Q)
+        print("Popped node ", u, "with distance", current_distance )
+        print("Q after the pop:", Q)
+
+        # check to see if we already found a shorter path to u
+        # Necessary to make changes to the heap. its an alternative to decrease-key
+        if current_distance > d[u]:
+            # print("Distance", current_distance, )
+            continue
+
+        # relaxation step
+
+        
+
+    print("Algo finished")
     return d, parent
+
+
+
 
 print("Testing initialization")
 dijkstra(G,s)

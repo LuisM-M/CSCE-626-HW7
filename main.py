@@ -14,12 +14,12 @@ def dijkstra(graph, source_node):
 # intialization
     d = {node: float('inf') for node in graph}
     parent = {node: None for node in graph}
-    d[s] = 0
-    parent[s] = s
+    d[source_node] = 0
+    parent[source_node] = source_node
 
     
-
-    Q = [(0, s)]
+    # Enqueue the source node
+    Q = [(0, source_node)]
 
 
     print("Distances: ", d)

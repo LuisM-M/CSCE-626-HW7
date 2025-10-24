@@ -43,7 +43,16 @@ def dijkstra(graph, source_node):
             # print("Distance", current_distance, )
             continue
 
-        # relaxation step
+        # for each neighbor v of u { 
+        print(f"  Checking neighbors of '{u}':")
+        for v, weight in graph[u].items():
+            print(f"    > Neighbor: '{v}', Edge weight w(u,v): {weight}")
+            # relaxation logic is added here
+            pass
+
+
+        print("current state: d=", d)
+        print("______________", iteration)
 
         
 
